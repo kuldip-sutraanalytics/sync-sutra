@@ -22,7 +22,7 @@ const ITEMS = [
 
 export default function Problems() {
   return (
-    <section id="problems" data-testid="problems-section" className="container-x py-20">
+    <section id="problems" data-testid="problems-section" className="container-x">
       <div className="max-w-2xl">
         <span className="eyebrow">The reality of running stores</span>
         <h2 className="mt-4 font-display font-extrabold text-3xl lg:text-5xl tracking-tighter">

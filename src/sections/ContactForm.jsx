@@ -96,7 +96,7 @@ const ContactForm = () => {
     <section
       id="contact"
       data-testid="contact-section"
-      className="container-x py-20"
+      className="container-x"
     >
       <div className="grid lg:grid-cols-12 gap-10 items-start">
         <div className="lg:col-span-5">

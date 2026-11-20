@@ -12,7 +12,7 @@ export default function ContactPage() {
   return (
     <>
       <PageHero eyebrow="Contact" title="Let's talk" highlight="WooCommerce." description="Sales, support, billing, feature requests or partnerships — send us a message." crumbs={[{ label: "Contact" }]} />
-      <div className="pb-16"><ContactForm /></div>
+      <div><ContactForm /></div>
     </>
   );
 }
