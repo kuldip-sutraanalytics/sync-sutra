@@ -5,12 +5,21 @@ export function createMetadata({ title, description, path = "/", image, type = "
   const url = `${SITE.url}${path}`;
   const desc = description || SITE.description;
   const images = image ? [{ url: image.startsWith("http") ? image : `${SITE.url}${image}` }] : undefined;
+
+  // Title can be a string ("Pricing") or an object ({ absolute: "Full title" }) – the home page uses the object form.
+  const socialTitle =
+    title && typeof title === "object"
+      ? title.absolute || title.default || SITE.name
+      : title
+        ? `${title} | ${SITE.name}`
+        : SITE.name;
+
   return {
     ...(title && { title }),
     description: desc,
     alternates: { canonical: url },
-    openGraph: { title: title ? `${title} | ${SITE.name}` : SITE.name, description: desc, url, siteName: SITE.name, type, ...(images && { images }) },
-    twitter: { card: "summary_large_image", title: title ? `${title} | ${SITE.name}` : SITE.name, description: desc, ...(images && { images }) },
+    openGraph: { title: socialTitle, description: desc, url, siteName: SITE.name, type, ...(images && { images }) },
+    twitter: { card: "summary_large_image", title: socialTitle, description: desc, ...(images && { images }) },
     ...(noindex && { robots: { index: false, follow: false } }),
   };
 }
