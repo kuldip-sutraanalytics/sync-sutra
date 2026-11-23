@@ -43,11 +43,11 @@ const UseCases = () => {
             className="surface overflow-hidden hover:-translate-y-1 transition-transform"
           >
             <div className="aspect-video overflow-hidden bg-[#f3f0fd]">
-              <img
-                src={c.img}
-                alt={c.title}
-                className="h-full w-full object-cover"
-                loading="lazy"
+              <div
+                role="img"
+                aria-label={c.title}
+                className="h-full w-full bg-cover bg-center"
+                style={{ backgroundImage: `url(${c.img})` }}
               />
             </div>
             <div className="p-7 lg:p-9">

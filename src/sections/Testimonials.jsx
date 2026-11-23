@@ -10,7 +10,7 @@ const T = [
     company: "Lumière Boutique",
     quote:
       "We connected three Woo stores in under ten minutes. Sync Sutra replaced a freelance analyst we used to pay monthly — and our weekly reports go out on autopilot now.",
-    avatar: "/Annya.jpg"
+    avatar: "/Annya.jpg",
   },
   {
     name: "Marco Vela",
@@ -18,39 +18,27 @@ const T = [
     company: "Haven & Hearth Co.",
     quote:
       "The data tables alone are worth it. We cut our weekly reporting time from six hours to fifteen minutes. The team actually looks at the numbers now — and acts on them.",
-    avatar:"/Marco.jpg" 
-   },
+    avatar: "/Marco.jpg",
+  },
   {
     name: "Diego Rojas",
     role: "Freelance Woo Developer",
     company: "PixelCraft Studio",
     quote:
       "I onboarded eleven client stores in a week. The auto-export reports make my retainer feel premium without me lifting a finger — clients renewed on the spot.",
-    avatar: "/Diago.jpg"
+    avatar: "/Diago.jpg",
   },
 ];
 
 // Image component with lazy loading and placeholder
-const AvatarImage = ({ src, alt }) => {
-  const [loaded, setLoaded] = useState(false);
-
-  return (
-    <div className="relative h-11 w-11 rounded-full overflow-hidden bg-[#e2dbf7]">
-      {!loaded && (
-        <div className="absolute inset-0 animate-pulse bg-linear-to-r from-[#e2dbf7] to-[#f3f0fd]" />
-      )}
-      <img
-        src={src}
-        alt={alt}
-        className={`h-full w-full object-cover transition-opacity duration-300 ${
-          loaded ? "opacity-100" : "opacity-0"
-        }`}
-        loading="lazy"
-        onLoad={() => setLoaded(true)}
-      />
-    </div>
-  );
-};
+const AvatarImage = ({ src, alt }) => (
+  <div
+    role="img"
+    aria-label={alt}
+    className="h-11 w-11 rounded-full bg-[#e2dbf7] bg-cover bg-center"
+    style={{ backgroundImage: `url(${src})` }}
+  />
+);
 
 const Testimonials = () => {
   return (
