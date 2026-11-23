@@ -4,7 +4,14 @@ import { SITE } from "@/data/site";
 export function createMetadata({ title, description, path = "/", image, type = "website", noindex = false }) {
   const url = `${SITE.url}${path}`;
   const desc = description || SITE.description;
-  const images = image ? [{ url: image.startsWith("http") ? image : `${SITE.url}${image}` }] : undefined;
+   const imgPath = image || "/logo.png";
+  const isLogo = imgPath === "/logo.png";
+  const images = [
+    {
+      url: imgPath.startsWith("http") ? imgPath : `${SITE.url}${imgPath}`,
+      ...(isLogo && { width: 376, height: 356, alt: "Sync Sutra logo" }),
+    },
+  ];
 
   // Title can be a string ("Pricing") or an object ({ absolute: "Full title" }) – the home page uses the object form.
   const socialTitle =
@@ -18,8 +25,8 @@ export function createMetadata({ title, description, path = "/", image, type = "
     ...(title && { title }),
     description: desc,
     alternates: { canonical: url },
-    openGraph: { title: socialTitle, description: desc, url, siteName: SITE.name, type, ...(images && { images }) },
-    twitter: { card: "summary_large_image", title: socialTitle, description: desc, ...(images && { images }) },
+    openGraph: { title: socialTitle, description: desc, url, siteName: SITE.name, type, images},
+    twitter: { card: isLogo ? "summary" : "summary_large_image", title: socialTitle, description: desc, images },
     ...(noindex && { robots: { index: false, follow: false } }),
   };
 }

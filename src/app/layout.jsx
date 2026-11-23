@@ -87,6 +87,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Sync Sutra – WooCommerce Analytics",
     description: SITE.description,
+    images: ["/logo.png"],
   },
   robots: { index: true, follow: true },
   icons: { icon: "/logo.png", apple: "/logo.png" },
